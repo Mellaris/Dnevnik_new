@@ -1,0 +1,15 @@
+D:\chernovik2\bin\Debug\chernovik2.exe.config
+D:\chernovik2\bin\Debug\chernovik2.exe
+D:\chernovik2\bin\Debug\chernovik2.pdb
+D:\chernovik2\obj\Debug\chernovik2.csproj.AssemblyReference.cache
+D:\chernovik2\obj\Debug\chernovik2.csproj.SuggestedBindingRedirects.cache
+D:\chernovik2\obj\Debug\chernovik2.csproj.CoreCompileInputs.cache
+D:\chernovik2\obj\Debug\chernovik2.exe
+D:\chernovik2\obj\Debug\chernovik2.pdb
+E:\chernovik2\obj\Debug\chernovik2.csproj.AssemblyReference.cache
+E:\chernovik2\obj\Debug\chernovik2.csproj.CoreCompileInputs.cache
+E:\chernovik2\obj\Debug\chernovik2.exe
+E:\chernovik2\obj\Debug\chernovik2.pdb
+E:\chernovik2\bin\Debug\chernovik2.exe.config
+E:\chernovik2\bin\Debug\chernovik2.exe
+E:\chernovik2\bin\Debug\chernovik2.pdb
