@@ -236,10 +236,7 @@ namespace chernovik2
                     sum_okt = nastr_okt[i + 1, q] + sum_okt;
                 }
             }
-            double sr_avg = sum_avg / 31.0;
-            double sr_sen = sum_sen / 30.0;
-            double sr_okt = sum_okt / 31.0;
-            double max_sr = (sr_avg + sr_sen + sr_okt) / 3.0;
+            double max_sr = ((sum_avg / 31.0) + (sum_sen / 30.0) + (sum_okt / 31.0)) / 3.0;
             Console.WriteLine($"Среднее настроение за 3 месяца: {max_sr}");
         }
         public void Vibor()
@@ -345,6 +342,8 @@ namespace chernovik2
         public void Sr_diap()
         {
             int sum_diap = 0;
+            int sum_diap_2 = 0;
+            int sum_diap_3 = 0;
             Console.Write("Введите начальную дату, с которой будет начинаться отсчет(Например: 5): ");
             int date_1 = Convert.ToInt32(Console.ReadLine());
             float d_1 = date_1;
@@ -354,15 +353,17 @@ namespace chernovik2
             int d2 = date_2;
             date_2 = date_2 + 1;
             float d_2 = date_2;
-            if (month == 1)
-            {
                 for (int i = date_1; date_1 + 1 < date_2; date_1++)
                 {
                     for (int q = 1; q < 2; q++)
                     {
                         sum_diap = sum_diap + nastr_avg[date_1, q];
+                        sum_diap_2 = sum_diap + nastr_sen[date_1, q];
+                        sum_diap_3 = sum_diap + nastr_okt[date_1, q];
                     }
                 }
+            if (month == 1)
+            {
                 ch = d_2 - d_1;
                 sr_diap = sum_diap / ch;
                 Console.WriteLine($"Среднее настроение с {d_1} августа по {d2} августа: {sr_diap}");
@@ -370,29 +371,15 @@ namespace chernovik2
             }
             if (month == 2)
             {
-                for (int i = date_1; date_1 + 1 < date_2; date_1++)
-                {
-                    for (int q = 1; q < 2; q++)
-                    {
-                        sum_diap = sum_diap + nastr_sen[date_1, q];
-                    }
-                }
                 ch = d_2 - d_1;
-                sr_diap = sum_diap / ch;
+                sr_diap = sum_diap_2 / ch;
                 Console.WriteLine($"Среднее настроение с {d_1} сентября по {d2} сентября: {sr_diap}");
                 Vibbor_2();
             }
             if (month == 3)
             {
-                for (int i = date_1; date_1 + 1 < date_2; date_1++)
-                {
-                    for (int q = 1; q < 2; q++)
-                    {
-                        sum_diap = sum_diap + nastr_okt[date_1, q];
-                    }
-                }
                 ch = d_2 - d_1;
-                sr_diap = sum_diap / ch;
+                sr_diap = sum_diap_3 / ch;
                 Console.WriteLine($"Среднее настроение с {d_1} октября по {d2} октября: {sr_diap}");
                 Vibbor_2();
             }
