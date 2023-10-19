@@ -166,7 +166,7 @@ namespace chernovik2
         }
         private void Nastr()
         {
-            Random nastr = new Random(1);
+            Random rand = new Random();
             row = nastr_avg.GetUpperBound(0) + 1;
             col = nastr_avg.Length / row;
             a = 1;
@@ -184,10 +184,9 @@ namespace chernovik2
                 {
                     for (int q = 1; q < 2; q++)
                     {
-                        nastr_avg[i, q] = nastr.Next(1, 6);
+                        nastr_avg[i, q] = rand.Next(1, 6);
                     }
                 }
-                Random nastr_2 = new Random(2);
                 row_2 = nastr_sen.GetUpperBound(0) + 1;
                 col_2 = nastr_sen.Length / row_2;
                 a = 1;
@@ -203,10 +202,9 @@ namespace chernovik2
                 {
                     for (int q = 1; q < 2; q++)
                     {
-                        nastr_sen[i, q] = nastr_2.Next(1, 6);
+                        nastr_sen[i, q] = rand.Next(1, 6);
                     }
                 }
-                Random nastr_3 = new Random(3);
                 row_3 = nastr_okt.GetUpperBound(0) + 1;
                 col_3 = nastr_okt.Length / row_3;
                 a = 1;
@@ -222,7 +220,7 @@ namespace chernovik2
                 {
                     for (int q = 1; q < 2; q++)
                     {
-                        nastr_okt[i, q] = nastr_3.Next(1, 6);
+                        nastr_okt[i, q] = rand.Next(1, 6);
                     }
                 }
                 c++;
@@ -262,12 +260,16 @@ namespace chernovik2
         }
         public void Vibor()
         {
-                for (int i = 0; i < 30; i++)
+            if (month == 3)
+                Console.WriteLine($"{nastr_okt[0, 0]} \t{nastr_okt[0, 1]} \t");
+            if (month == 1)
+                Console.WriteLine($"{nastr_avg[0, 0]} \t{nastr_avg[0, 1]} \t");
+            for (int i = 0; i < 30; i++)
                 {
                     for (int q = 0; q < col_3; q++)
                     {
                         if (month == 3)
-                            Console.Write($"{nastr_okt[i + 1, q]} \t");
+                        Console.Write($"{nastr_okt[i + 1, q]} \t");
                         if (month == 2)
                             Console.Write($"{nastr_sen[i, q]} \t");
                         if (month == 1)
