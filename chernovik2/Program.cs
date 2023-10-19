@@ -289,8 +289,7 @@ namespace chernovik2
         }
         public void Sr_ned()
         {
-            double sum_avg_2 = 0;
-            double sum_okt_2 = 0;
+            double sum_avg_2 = 0, sum_okt_2 = 0, sum_sen_2 = 0;
             for (int i = 24; i < 31; i++)
             {
                 for (int q = 1; q < 2; q++)
@@ -313,7 +312,6 @@ namespace chernovik2
             }
             if (month == 2)
             {
-                double sum_sen_2 = 0;
                 for (int i = 23; i < 30; i++)
                 {
                     for (int q = 1; q < 2; q++)
@@ -341,9 +339,7 @@ namespace chernovik2
         }
         public void Sr_diap()
         {
-            int sum_diap = 0;
-            int sum_diap_2 = 0;
-            int sum_diap_3 = 0;
+            int sum_diap = 0, sum_diap_2 = 0, sum_diap_3 = 0;
             Console.Write("Введите начальную дату, с которой будет начинаться отсчет(Например: 5): ");
             int date_1 = Convert.ToInt32(Console.ReadLine());
             float d_1 = date_1;
@@ -358,8 +354,8 @@ namespace chernovik2
                     for (int q = 1; q < 2; q++)
                     {
                         sum_diap = sum_diap + nastr_avg[date_1, q];
-                        sum_diap_2 = sum_diap + nastr_sen[date_1, q];
-                        sum_diap_3 = sum_diap + nastr_okt[date_1, q];
+                        sum_diap_2 = sum_diap_2 + nastr_sen[date_1, q];
+                        sum_diap_3 = sum_diap_3 + nastr_okt[date_1, q];
                     }
                 }
             if (month == 1)
