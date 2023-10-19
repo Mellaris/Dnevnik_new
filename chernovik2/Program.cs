@@ -22,8 +22,6 @@ namespace chernovik2
         private int[,] nastr_okt = new int[31, 2];
         private int row_2;
         private int col_2;
-        private int row_3;
-        private int col_3;
         private int vibor_2;
         private int c = 0;
         private float ch;
@@ -205,10 +203,8 @@ namespace chernovik2
                         nastr_sen[i, q] = rand.Next(1, 6);
                     }
                 }
-                row_3 = nastr_okt.GetUpperBound(0) + 1;
-                col_3 = nastr_okt.Length / row_3;
                 a = 1;
-                for (int i = 0; i < row_3 && a <= 31; i++)
+                for (int i = 0; i < row && a <= 31; i++)
                 {
                     for (int q = 0; q < 1; q++)
                     {
@@ -216,7 +212,7 @@ namespace chernovik2
                         a++;
                     }
                 }
-                for (int i = 0; i < row_3; i++)
+                for (int i = 0; i < row; i++)
                 {
                     for (int q = 1; q < 2; q++)
                     {
@@ -228,28 +224,16 @@ namespace chernovik2
         }
         public void Nastr_3()
         {
-            int sum_avg = 0;
+            int sum_avg = nastr_avg[0, 1];
             int sum_sen = 0;
-            int sum_okt = 0;
-            for (int i = 0; i < row; i++)
+            int sum_okt = nastr_okt[0, 1];
+            for (int i = 0; i < 30; i++)
             {
                 for (int q = 1; q < 2; q++)
                 {
-                    sum_avg = nastr_avg[i, q] + sum_avg;
-                }
-            }
-            for (int i = 0; i < row_2; i++)
-            {
-                for (int q = 1; q < 2; q++)
-                {
+                    sum_avg = nastr_avg[i + 1, q] + sum_avg;
                     sum_sen = nastr_sen[i, q] + sum_sen;
-                }
-            }
-            for (int i = 0; i < row_3; i++)
-            {
-                for (int q = 1; q < 2; q++)
-                {
-                    sum_okt = nastr_okt[i, q] + sum_okt;
+                    sum_okt = nastr_okt[i + 1, q] + sum_okt;
                 }
             }
             double sr_avg = sum_avg / 31.0;
@@ -266,7 +250,7 @@ namespace chernovik2
                 Console.WriteLine($"{nastr_avg[0, 0]} \t{nastr_avg[0, 1]} \t");
             for (int i = 0; i < 30; i++)
                 {
-                    for (int q = 0; q < col_3; q++)
+                    for (int q = 0; q < 2; q++)
                     {
                         if (month == 3)
                         Console.Write($"{nastr_okt[i + 1, q]} \t");
@@ -308,18 +292,25 @@ namespace chernovik2
         }
         public void Sr_ned()
         {
-
+            double sum_avg_2 = 0;
+            double sum_okt_2 = 0;
+            for (int i = 24; i < 31; i++)
+            {
+                for (int q = 1; q < 2; q++)
+                {
+                    sum_avg_2 = nastr_avg[i, q] + sum_avg_2;
+                    sum_okt_2 = nastr_okt[i, q] + sum_okt_2;
+                }
+            }
             if (month == 1)
             {
-                double sum_avg_2 = 0;
-                for (int i = 24; i < 31; i++)
-                {
-                    for (int q = 1; q < 2; q++)
-                    {
-                        sum_avg_2 = nastr_avg[i, q] + sum_avg_2;
-                    }
-                }
                 double sr_ned = sum_avg_2 / 7.0;
+                Console.WriteLine($"Среднее настроение за последнюю неделю: {sr_ned}");
+                Vibbor_2();
+            }
+            if (month == 3)
+            {
+                double sr_ned = sum_okt_2 / 7.0;
                 Console.WriteLine($"Среднее настроение за последнюю неделю: {sr_ned}");
                 Vibbor_2();
             }
@@ -334,20 +325,6 @@ namespace chernovik2
                     }
                 }
                 double sr_ned = sum_sen_2 / 7.0;
-                Console.WriteLine($"Среднее настроение за последнюю неделю: {sr_ned}");
-                Vibbor_2();
-            }
-            if (month == 3)
-            {
-                double sum_okt_2 = 0;
-                for (int i = 24; i < 31; i++)
-                {
-                    for (int q = 1; q < 2; q++)
-                    {
-                        sum_okt_2 = nastr_okt[i, q] + sum_okt_2;
-                    }
-                }
-                double sr_ned = sum_okt_2 / 7.0;
                 Console.WriteLine($"Среднее настроение за последнюю неделю: {sr_ned}");
                 Vibbor_2();
             }
@@ -424,7 +401,7 @@ namespace chernovik2
         {
             for (int i = 0; i < 30; i++)
             {
-                for (int q = 0; q < col_3; q++)
+                for (int q = 0; q < 2; q++)
                 {
                     if (month == 1)
                     {
@@ -486,7 +463,7 @@ namespace chernovik2
         {
                 for (int i = 0; i < 30; i++)
                 {
-                    for (int q = 0; q < col_3; q++)
+                    for (int q = 0; q < 2; q++)
                     {
                         if (month == 1)
                         {
